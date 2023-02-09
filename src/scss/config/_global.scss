@@ -1,0 +1,27 @@
+@import "variable";
+
+html,
+body,
+nav,
+footer {
+    background-color: $bgColor;
+    color: $textColor;
+    // font-family: $fontFamily;
+    font-size: 16px;
+    line-height: 1.4rem;
+    position: relative;
+    height: 100%;
+}
+
+.bodyWrapper {
+    height: auto;
+    min-height: calc(100% - $navHeight);
+    padding-top: $navHeight;
+}
+
+.container {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 10px;
+}

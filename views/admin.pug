@@ -1,0 +1,7 @@
+extends includes/layout
+include mixins/imgBlock
+
+block content
+    .container 
+        div=user.id
+        a(href="/admin/upload") 시공사례업로드

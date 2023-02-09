@@ -1,0 +1,48 @@
+@import "../config/variable";
+@import "../config/mixins";
+
+nav {
+    background-color: white;
+    border-bottom: 1px solid $borderColor;
+    height: fit-content;
+    // color: $bgColor;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+    .nav {
+        height: $navHeight;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    i {
+        margin-right: 5px;
+    }
+    li {
+        &:first-child {
+            font-size: 28px;
+            font-weight: 700;
+        }
+        &:last-child {
+            font-size: 24px;
+            font-weight: 700;
+        }
+    }
+}
+
+@include mobile {
+    nav {
+        i {
+            margin-right: 5px;
+        }
+        li {
+            &:first-child {
+                font-size: 22px;
+            }
+            &:last-child {
+                font-size: 18px;
+            }
+        }
+    }
+}

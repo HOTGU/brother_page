@@ -1,0 +1,10 @@
+extends includes/layout
+include mixins/imgBlock
+
+block content
+    .container 
+        form(action="/auth" method="post")
+            input(name="_csrf" value=csrfToken hidden)
+            input(name="id")
+            input(type="password" name="pw")
+            input(type="submit" value="제출")

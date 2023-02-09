@@ -1,0 +1,10 @@
+extends includes/layout
+include mixins/imgBlock
+
+block content
+    .container
+        form(action="/admin/upload" method="post")
+            input(name="_csrf" value=csrfToken)
+            input(type="file" name="photos" multiple)
+            input(name="title")
+            input(type="submit" value="제출")
