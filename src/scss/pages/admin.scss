@@ -1,0 +1,22 @@
+.portfolioLine {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    .index {
+        font-weight: 700;
+    }
+    .portfolio {
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    .deleteBtn {
+        background-color: $red;
+        color: $white;
+        padding: 2px 8px;
+        border-radius: 3px;
+    }
+}
+.uploadBtn {
+    margin: 10px 0;
+}

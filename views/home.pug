@@ -1,5 +1,6 @@
 extends includes/layout
 include mixins/imgBlock
+include mixins/portfolioCard
 
 block content 
     .home
@@ -13,17 +14,24 @@ block content
                 h3 주요사업분야
                 h4 태양누수의 주요사업을 소개합니다.
                 .listContainer
-                    +imgBlock("/static/images/누수탐지.jpg", "누수탐지", '다양한 경험의 축척된 노하우')
-                    +imgBlock("/static/images/방수공사.jpg", "방수공사", '꼼꼼하고 확실한 방수공법적용')
-                    +imgBlock("/static/images/상하수도배관공사.jpg", "상/하수도 배관공사","노후배관교체및 신설배관공사")
-                    +imgBlock("/static/images/욕실공사.jpg", "욕실공사", "욕실공사 전문팀의 뛰어난 노하우")
+                    +imgBlock("/static/images/누수탐지.webp", "누수탐지", '다양한 경험의 축척된 노하우')
+                    +imgBlock("/static/images/방수공사.webp", "방수공사", '꼼꼼하고 확실한 방수공법적용')
+                    +imgBlock("/static/images/상하수도배관공사.webp", "상/하수도 배관공사","노후배관교체및 신설배관공사")
+                    +imgBlock("/static/images/욕실공사.webp", "욕실공사", "욕실공사 전문팀의 뛰어난 노하우")
         .dark
             .container
                 .section
-                    h3 보유장비
-                    h4 태양누수의 보유장비를 소개합니다.
-                    .listContainer
-                        +imgBlock("/static/images/가스식누수탐지기.jpg", "가스식누수탐지기")
-                        +imgBlock("/static/images/청음식누수탐지기.jpg", "청음식누수탐지기")
-                        +imgBlock("/static/images/열화상카메라.jpg", "열화상카메라")
-                        +imgBlock("/static/images/내시경카메라.jpg", "내시경카메라")
+                    h3 시공사례
+                    h4 태양누수가 직접 시공한 공사사진을 보실 수 있습니다.
+                    .portfolioWrapper
+                        each portfolio in portfolios
+                            +portfolioCard(portfolio)
+        .container
+            .section
+                h3 보유장비
+                h4 태양누수의 보유장비를 소개합니다.
+                .listContainer
+                    +imgBlock("/static/images/가스식누수탐지기.webp", "가스식누수탐지기")
+                    +imgBlock("/static/images/청음식누수탐지기.webp", "청음식누수탐지기")
+                    +imgBlock("/static/images/열화상카메라.webp", "열화상카메라")
+                    +imgBlock("/static/images/내시경카메라.webp", "내시경카메라")

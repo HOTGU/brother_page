@@ -1,0 +1,8 @@
+extends includes/layout
+include mixins/portfolioCard
+
+block content
+    .container
+        .portfolioWrapper
+            each portfolio in portfolios
+                +portfolioCard(portfolio)

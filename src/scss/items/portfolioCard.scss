@@ -1,0 +1,17 @@
+.portfolioWrapper {
+    margin: 10px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(254px, 1fr));
+    gap: 10px;
+    align-self: flex-start;
+}
+.portfolioCard {
+    width: 100%;
+    img {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+    }
+    h2 {
+        font-weight: 700;
+    }
+}

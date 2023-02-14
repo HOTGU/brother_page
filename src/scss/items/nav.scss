@@ -5,7 +5,6 @@ nav {
     background-color: white;
     border-bottom: 1px solid $borderColor;
     height: fit-content;
-    // color: $bgColor;
     position: fixed;
     top: 0;
     z-index: 999;
@@ -28,6 +27,9 @@ nav {
             font-size: 24px;
             font-weight: 700;
         }
+    }
+    .underline {
+        text-decoration: underline;
     }
 }
 

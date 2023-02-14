@@ -1,0 +1,4 @@
+mixin portfolioCard(portfolio)
+    a(href=`/portfolio/${portfolio._id}`).portfolioCard
+        img(src=portfolio.photos[0])
+        h2=portfolio.title

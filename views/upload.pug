@@ -3,8 +3,16 @@ include mixins/imgBlock
 
 block content
     .container
-        form(action="/admin/upload" method="post")
-            input(name="_csrf" value=csrfToken)
-            input(type="file" name="photos" multiple)
-            input(name="title")
+        form(action="/admin/upload" method="post" enctype="multipart/form-data")
+            input(name="_csrf" value=csrfToken hidden)
+            #preview
+            #fileBtn.btn 📂사진업로드
+            input(type="file" name="photos" id="jsInputFile" multiple hidden)
+            input(type="file" id="jsFakeInput" multiple hidden)
+            input(name="title" placeholder="제목")
+            textarea(name="desc" placeholder="본문")
             input(type="submit" value="제출")
+
+    script(src="/static/js/upload.js")
+
+    script(type="text/javascript" src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.0/dist/browser-image-compression.js")

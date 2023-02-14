@@ -24,7 +24,7 @@ const MONGO_URL = process.env.MONGO_URL;
 if (process.env.NODE_ENV === "development") {
     app.use(morgan("dev"));
 }
-
+mongoose.set("strictQuery", false);
 mongoose.connect(MONGO_URL);
 
 const db = mongoose.connection;
@@ -35,7 +35,30 @@ const handleDBSuccess = () => console.log(`✅DB연결 성공`);
 db.on("error", handleDBError);
 db.once("open", handleDBSuccess);
 
-app.use(helmet());
+const cspOptions = {
+    directives: {
+        ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+        "default-src": ["'self'", "blob:*", "*.fontawesome.com"],
+        "img-src": [
+            "'self'",
+            "blob:",
+            "data:",
+            "https://sunnusu.s3.ap-northeast-2.amazonaws.com",
+        ],
+        "script-src": [
+            "'self'",
+            "*.fontawesome.com",
+            "https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.0/dist/browser-image-compression.js",
+        ],
+    },
+};
+
+app.use(
+    helmet({
+        contentSecurityPolicy: cspOptions,
+        crossOriginEmbedderPolicy: false,
+    })
+);
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "/views"));
 app.use("/static", express.static(__dirname + "/static"));
@@ -52,7 +75,7 @@ app.use(
         cookie: {
             maxAge: 3.6e6 * 24,
             httpOnly: true,
-            secure: false,
+            secure: process.env.NODE_ENV === "production",
         },
     })
 );

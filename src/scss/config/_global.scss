@@ -25,3 +25,11 @@ footer {
     margin: 0 auto;
     padding: 0 10px;
 }
+.btn {
+    background-color: $textColor;
+    color: $white;
+    display: inline-block;
+    width: fit-content;
+    padding: 10px;
+    cursor: pointer;
+}

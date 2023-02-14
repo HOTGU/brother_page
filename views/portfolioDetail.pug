@@ -1,0 +1,10 @@
+extends includes/layout
+include mixins/portfolioCard
+
+block content
+    .container
+        .detail
+            h1=portfolio.title
+            p=portfolio.desc
+            each photo in portfolio.photos
+                img(src=photo)

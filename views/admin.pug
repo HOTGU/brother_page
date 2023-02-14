@@ -2,6 +2,12 @@ extends includes/layout
 include mixins/imgBlock
 
 block content
-    .container 
-        div=user.id
-        a(href="/admin/upload") 시공사례업로드
+    .container
+        a(href="/admin/upload").btn.uploadBtn 시공사례업로드
+        each portfolio,index in portfolios
+            .portfolioLine
+                div.index=index+1
+                a(href=`/portfolio/${portfolio._id}`).portfolio
+                    div=portfolio.title
+                a(href=`/admin/${portfolio._id}/remove`).deleteBtn
+                    div 삭제
