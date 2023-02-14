@@ -1,4 +1,4 @@
 mixin portfolioCard(portfolio)
-    a(href=`/portfolio/${portfolio._id}`).portfolioCard
+    a(href=`/portfolio/${portfolio._id}` target="_blank").portfolioCard
         img(src=portfolio.photos[0])
         h2=portfolio.title
