@@ -8,8 +8,7 @@ export const csrfProtection = csrf({ cookie: true });
 export const onlyAdmin = (req, res, next) => {
     const user = req.session.user;
     if (!user) res.redirect("/");
-    const admin = user.isAdmin;
-    if (!admin) res.redirect("/");
+    if (!user.isAdmin) res.redirect("/");
     next();
 };
 
