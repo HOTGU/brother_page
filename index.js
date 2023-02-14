@@ -25,6 +25,7 @@ if (process.env.NODE_ENV === "development") {
     app.use(morgan("dev"));
 }
 mongoose.set("strictQuery", false);
+
 mongoose.connect(MONGO_URL);
 
 const db = mongoose.connection;
