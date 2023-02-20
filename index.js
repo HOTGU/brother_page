@@ -22,7 +22,7 @@ const PORT = process.env.PORT || 5000;
 const MONGO_URL = process.env.MONGO_URL;
 
 if (process.env.NODE_ENV === "development") {
-    app.use(morgan("dev"));
+  app.use(morgan("dev"));
 }
 mongoose.set("strictQuery", false);
 
@@ -37,28 +37,28 @@ db.on("error", handleDBError);
 db.once("open", handleDBSuccess);
 
 const cspOptions = {
-    directives: {
-        ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-        "default-src": ["'self'", "blob:*", "*.fontawesome.com"],
-        "img-src": [
-            "'self'",
-            "blob:",
-            "data:",
-            "https://sunnusu.s3.ap-northeast-2.amazonaws.com",
-        ],
-        "script-src": [
-            "'self'",
-            "*.fontawesome.com",
-            "https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.0/dist/browser-image-compression.js",
-        ],
-    },
+  directives: {
+    ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+    "default-src": ["'self'", "blob:*", "*.fontawesome.com"],
+    "img-src": [
+      "'self'",
+      "blob:",
+      "data:",
+      "https://sunnusu.s3.ap-northeast-2.amazonaws.com",
+    ],
+    "script-src": [
+      "'self'",
+      "*.fontawesome.com",
+      "https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.0/dist/browser-image-compression.js",
+    ],
+  },
 };
 
 app.use(
-    helmet({
-        contentSecurityPolicy: cspOptions,
-        crossOriginEmbedderPolicy: false,
-    })
+  helmet({
+    contentSecurityPolicy: cspOptions,
+    crossOriginEmbedderPolicy: false,
+  })
 );
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "/views"));
@@ -68,17 +68,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(
-    session({
-        secret: process.env.COOKIE_SECRET,
-        resave: false,
-        saveUninitialized: true,
-        store: MongoStore.create({ mongoUrl: MONGO_URL }),
-        cookie: {
-            maxAge: 3.6e6 * 24,
-            httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-        },
-    })
+  session({
+    secret: process.env.COOKIE_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create({ mongoUrl: MONGO_URL }),
+    cookie: {
+      maxAge: 3.6e6 * 24,
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+    },
+  })
 );
 
 app.use(setLocal);
