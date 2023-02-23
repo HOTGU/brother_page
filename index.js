@@ -60,6 +60,11 @@ app.use(
     crossOriginEmbedderPolicy: false,
   })
 );
+
+if (process.env.NODE_ENV === "Production") {
+  app.set("trust proxy", 1);
+}
+
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "/views"));
 app.use("/static", express.static(__dirname + "/static"));
@@ -76,8 +81,7 @@ app.use(
     cookie: {
       maxAge: 3.6e6 * 24,
       httpOnly: true,
-      // secure: process.env.NODE_ENV === "Production",
-      secure: false,
+      secure: process.env.NODE_ENV === "Production",
     },
   })
 );
