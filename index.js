@@ -20,6 +20,7 @@ import { setLocal } from "./middleware.js";
 const app = express();
 const PORT = process.env.PORT || 5000;
 const MONGO_URL = process.env.MONGO_URL;
+const NODE_ENV = process.env.NODE_ENV;
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
@@ -76,7 +77,7 @@ app.use(
       maxAge: 3.6e6 * 24,
       httpOnly: true,
       // secure: process.env.NODE_ENV === "production",
-      secure: false,
+      secure: NODE_ENV === "Production",
     },
   })
 );
