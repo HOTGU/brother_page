@@ -22,6 +22,9 @@ const PORT = process.env.PORT || 5000;
 const MONGO_URL = process.env.MONGO_URL;
 const NODE_ENV = process.env.NODE_ENV;
 
+console.log(NODE_ENV);
+console.log(process.env.NODE_ENV === "Production");
+
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
@@ -77,7 +80,7 @@ app.use(
       maxAge: 3.6e6 * 24,
       httpOnly: true,
       // secure: process.env.NODE_ENV === "production",
-      secure: NODE_ENV === "Production",
+      secure: process.env.NODE_ENV === "Production",
     },
   })
 );
